@@ -1,0 +1,59 @@
+{
+  "schemaVersion": "1",
+  "id": "notion-sync",
+  "name": "Notion Sync",
+  "version": "1.0.0",
+  "description": "Пример CMCPT: чтение и поиск страниц Notion",
+  "author": {
+    "name": "Runturu",
+    "contact": "dev@runturu.com"
+  },
+  "runtime": "python3.12",
+  "transport": "streamable-http",
+  "tools": [
+    {
+      "name": "search_pages",
+      "description": "Найти страницы по запросу",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "query": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "query"
+        ]
+      }
+    },
+    {
+      "name": "get_page",
+      "description": "Прочитать страницу по id",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "page_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "page_id"
+        ]
+      }
+    }
+  ],
+  "configFields": [
+    {
+      "key": "token",
+      "label": "Токен Notion",
+      "type": "string",
+      "secret": true,
+      "required": true
+    }
+  ],
+  "permissions": {
+    "network": [
+      "api.notion.com"
+    ]
+  }
+}
